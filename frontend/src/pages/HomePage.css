@@ -1,0 +1,42 @@
+.home {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff9e6, #ffe0f0);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.home-header {
+  text-align: center;
+  padding: 32px 16px 16px;
+  position: relative;
+}
+
+.home-title {
+  font-size: 2.2rem;
+  color: #ff7043;
+  margin: 0 0 8px;
+}
+
+.home-subtitle {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+}
+
+.test-link {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 13px;
+  color: #2f80ed;
+  text-decoration: none;
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.home-content {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}

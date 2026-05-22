@@ -1,0 +1,45 @@
+.draw-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff9e6, #ffe0f0);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.draw-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.back-btn {
+  text-decoration: none;
+  font-size: 14px;
+  color: #2f80ed;
+  font-weight: bold;
+}
+
+.draw-target {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.draw-target-emoji {
+  font-size: 1.8rem;
+}
+
+.draw-target-name {
+  font-weight: bold;
+  color: #ff7043;
+  font-size: 1.2rem;
+}
+
+.draw-content {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}

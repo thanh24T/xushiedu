@@ -1,0 +1,180 @@
+.reg-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdf0e8, #fce8e0);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 32px;
+}
+
+/* Header */
+.reg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 8px;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+}
+
+.reg-back {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.reg-steps {
+  display: flex;
+  gap: 6px;
+}
+
+.reg-step {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e0c9b8;
+}
+
+.reg-step.active {
+  background: #e07030;
+}
+
+/* Title */
+.reg-title-wrap {
+  text-align: center;
+  padding: 24px 16px 20px;
+}
+
+.reg-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #c0521a;
+  margin: 0 0 6px;
+}
+
+.reg-subtitle {
+  font-size: 14px;
+  color: #a08070;
+  margin: 0;
+}
+
+/* Card */
+.reg-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 24px 28px;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reg-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7a4020;
+  margin: 0 0 4px;
+}
+
+.reg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reg-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a08070;
+}
+
+.reg-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ede0d8;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+  background: #fdf8f5;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.reg-input:focus {
+  border-color: #e07030;
+}
+
+.reg-input::placeholder {
+  color: #c0a898;
+}
+
+.reg-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.reg-input-wrap .reg-input {
+  padding-right: 44px;
+}
+
+.reg-eye {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.reg-error {
+  font-size: 13px;
+  color: #e03e3e;
+  margin: 0;
+  text-align: center;
+}
+
+/* Footer button */
+.reg-footer {
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+}
+
+.reg-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #e07030, #c05010);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(224, 112, 48, 0.45);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.reg-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(224, 112, 48, 0.55);
+}

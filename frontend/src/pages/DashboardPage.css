@@ -1,0 +1,256 @@
+.dash-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #fdf0e8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dash-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dash-mascot-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(200, 120, 60, 0.3);
+  background: #fff3e0;
+  z-index: 50;
+}
+
+.dash-mascot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sidebar */
+.dash-sidebar {
+  width: 200px;
+  min-width: 200px;
+  background: #fdf0e8;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  border-right: 1px solid #f0e0d0;
+}
+
+.dash-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 32px;
+}
+
+.dash-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.dash-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dash-nav-item:first-child {
+  background: #e07030;
+  color: #fff;
+}
+
+.dash-nav-item:hover {
+  background: #f5e0d0;
+  color: #c05010;
+}
+
+.dash-nav-item:first-child:hover {
+  background: #c05010;
+  color: #fff;
+}
+
+.dash-nav-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+.dash-logout {
+  color: #888;
+}
+
+/* Main */
+.dash-main {
+  flex: 1;
+  padding: 16px 28px;
+  overflow-y: auto;
+}
+
+.dash-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 4px;
+}
+
+.dash-section-sub {
+  font-size: 13px;
+  color: #aaa;
+  margin: 0 0 24px;
+}
+
+/* Stats */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dash-stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dash-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px;
+}
+
+.dash-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+
+/* Bottom */
+.dash-bottom {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+}
+
+.dash-chart-card,
+.dash-recent-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.dash-chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin: 0 0 16px;
+}
+
+/* Activities */
+.dash-activities {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-activity-emoji {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.dash-activity-info {
+  flex: 1;
+}
+
+.dash-activity-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 2px;
+}
+
+.dash-activity-desc {
+  font-size: 12px;
+  color: #aaa;
+  margin: 0;
+}
+
+.dash-activity-play {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e07030;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.dash-activity-play:hover {
+  background: #c05010;
+}

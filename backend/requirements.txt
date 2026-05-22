@@ -1,0 +1,10 @@
+flask
+flask-cors
+flask-sqlalchemy
+pillow
+numpy
+scikit-learn
+joblib
+pyodbc
+python-dotenv
+werkzeug

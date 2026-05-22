@@ -1,0 +1,131 @@
+.main-canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.main-canvas {
+  border: 5px solid #ffb347;
+  border-radius: 20px;
+  cursor: crosshair;
+  touch-action: none;
+  box-shadow: 0 8px 30px rgba(255, 179, 71, 0.4);
+  background: #fff;
+}
+
+.main-btn-clear {
+  padding: 14px 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff6b6b, #ff4d4d);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 6px 16px rgba(255, 77, 77, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.main-btn-clear:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 77, 77, 0.5);
+}
+
+/* Popup */
+.main-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+
+.main-popup {
+  background: linear-gradient(135deg, #fffbe6, #fff0f6);
+  border-radius: 28px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease;
+  max-width: 500px;
+  width: 90%;
+}
+
+.main-popup-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin: 0;
+}
+
+.main-popup-cards {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.main-popup-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 4px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 20px 16px;
+  width: 130px;
+  cursor: default;
+  transition: transform 0.15s;
+}
+
+.main-popup-card-top {
+  border-color: #ffb347;
+  box-shadow: 0 6px 20px rgba(255, 179, 71, 0.5);
+  transform: scale(1.1);
+}
+
+.main-popup-emoji {
+  font-size: 3.5rem;
+}
+
+.main-popup-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.main-popup-close {
+  padding: 12px 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #56ccf2, #2f80ed);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(47, 128, 237, 0.4);
+  transition: transform 0.1s;
+}
+
+.main-popup-close:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0 }
+  to { transform: scale(1); opacity: 1 }
+}

@@ -1,0 +1,229 @@
+.result-page {
+  height: 100vh;
+  background: linear-gradient(135deg, #fdf0e8, #fce8e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 0 32px;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Decorative blobs */
+.result-page::before {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(180,160,220,0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  left: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.result-page::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,180,120,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  right: 10%;
+  top: 20%;
+  pointer-events: none;
+}
+
+/* Left card */
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.result-drawing-wrap {
+  width: 280px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1), -10px 10px 0 #ddd8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transform: rotate(-5deg);
+  transition: transform 0.3s;
+}
+
+.result-drawing-wrap:hover {
+  transform: rotate(0deg);
+}
+
+.result-drawing {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #faf8f5;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.result-drawing-placeholder {
+  font-size: 5rem;
+  padding: 40px;
+}
+
+.result-username {
+  font-size: 1rem;
+  color: #aaa;
+  font-weight: 500;
+  margin: 0;
+  padding: 12px 0 16px;
+}
+
+.result-drawing {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.result-drawing-placeholder {
+  font-size: 5rem;
+}
+
+.result-username {
+  font-size: 1.1rem;
+  color: #888;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Right info */
+.result-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 360px;
+  position: relative;
+  z-index: 1;
+}
+
+.result-ai-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #e07030;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+/* Badge */
+.result-badge {
+  background: linear-gradient(135deg, #c05010, #e07030);
+  border-radius: 50px;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 32px rgba(224, 112, 48, 0.6),
+              0 0 60px rgba(224, 112, 48, 0.3);
+}
+
+.result-badge-stars {
+  font-size: 1.4rem;
+  color: #ffd54f;
+}
+
+.result-badge-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.result-badge-en {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+}
+
+/* Fact card */
+.result-fact-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  position: relative;
+  margin-top: 20px;
+}
+
+.result-mascot {
+  position: absolute;
+  top: -36px;
+  right: -12px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.result-fact {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+  padding-right: 52px;
+}
+
+/* Buttons */
+.result-btns {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.result-btn-retry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 50px;
+  background: #ede8e0;
+  color: #666;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.result-btn-retry:hover {
+  background: #e0d8d0;
+}
+
+.result-btn-next {
+  flex: 1;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #5c6bc0, #3949ab);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(57, 73, 171, 0.45);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.result-btn-next:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(57, 73, 171, 0.55);
+}
