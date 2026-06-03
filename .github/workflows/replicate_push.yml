@@ -13,19 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install Cog
-        run: |
-          sudo curl -o /usr/local/bin/cog -L "https://github.com/replicate/cog/releases/latest/download/cog_$(uname -s)_$(uname -m)"
-          sudo chmod +x /usr/local/bin/cog
+      - name: Setup Cog
+        uses: replicate/setup-cog@v2
+        with:
+          token: ${{ secrets.REPLICATE_API_TOKEN }}
 
       - name: Push model to Replicate
-        env:
-          REPLICATE_API_TOKEN: ${{ secrets.REPLICATE_API_TOKEN }}
         run: |
-          # Di chuyển vào thư mục chứa cấu hình
           cd replicate_model
-          
-          # Đẩy model lên (Cog sẽ tự động dùng REPLICATE_API_TOKEN)
           cog push r8.im/${{ github.event.inputs.model_name }}
