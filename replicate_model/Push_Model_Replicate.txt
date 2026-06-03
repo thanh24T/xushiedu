@@ -1,0 +1,116 @@
+# =========================================================================
+# HƯỚNG DẪN PUSH MODEL LÊN REPLICATE BẰNG GOOGLE COLAB
+# =========================================================================
+
+Bước 1: Lấy API Token của Replicate
+- Truy cập: https://replicate.com/account/api-tokens
+- Copy API Token của bạn.
+
+Bước 2: Tạo Model trống trên Replicate
+- Truy cập: https://replicate.com/create
+- Nhập tên model (ví dụ: xushi_edu_llm), chọn Public/Private rồi bấm Create.
+- Ghi nhớ đường dẫn model của bạn, ví dụ: "thanh24t/xushi_edu_llm"
+
+Bước 3: Mở Google Colab
+- Truy cập: https://colab.research.google.com/
+- Tạo một "New Notebook" (Sổ tay mới).
+- Chọn Runtime -> Change runtime type -> Chọn T4 GPU -> Bấm Save.
+
+Bước 4: Copy toàn bộ đoạn code bên dưới, dán vào 1 ô trống duy nhất trong Colab và bấm Chạy (nút ▶️).
+
+# --- COPY TOÀN BỘ ĐOẠN CODE BÊN DƯỚI DÁN VÀO 1 Ô TRONG COLAB ---
+
+import os
+from getpass import getpass
+
+print("=== NHẬP THÔNG TIN REPLICATE ===")
+api_token = getpass("Nhập REPLICATE_API_TOKEN của bạn: ")
+model_name = input("Nhập tên Model trên Replicate (vd: thanh24t/xushi_edu_llm): ")
+
+os.environ["REPLICATE_API_TOKEN"] = api_token
+
+print("\n1. Đang cài đặt công cụ Cog...")
+!curl -o /usr/local/bin/cog -L https://github.com/replicate/cog/releases/latest/download/cog_`uname -s`_`uname -m`
+!chmod +x /usr/local/bin/cog
+
+print("\n2. Đang tạo các file cấu hình...")
+!mkdir -p replicate_model
+%cd replicate_model
+
+with open("cog.yaml", "w", encoding="utf-8") as f:
+    f.write("""build:
+  gpu: true
+  python_version: "3.10"
+  python_packages:
+    - "torch==2.1.0"
+    - "transformers==4.35.0"
+    - "peft==0.6.2"
+    - "accelerate==0.24.1"
+    - "bitsandbytes==0.41.2"
+
+predict: "predict.py:Predictor"
+""")
+
+with open("predict.py", "w", encoding="utf-8") as f:
+    f.write("""from cog import BasePredictor, Input
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from peft import PeftModel
+
+class Predictor(BasePredictor):
+    def setup(self):
+        print("Đang tải Base Model Llama-3-8B...")
+        base_model_name = "unsloth/llama-3-8b-Instruct-bnb-4bit"
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_use_double_quant=True,
+        )
+
+        self.tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+        if self.tokenizer.pad_token is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+
+        base_model = AutoModelForCausalLM.from_pretrained(
+            base_model_name,
+            quantization_config=quantization_config,
+            device_map="auto"
+        )
+
+        print("Đang tải LoRA Model từ HuggingFace...")
+        lora_repo = "SDSD124/xushiedu-llama3-8b-lora"
+        self.model = PeftModel.from_pretrained(base_model, lora_repo)
+        self.model.eval()
+        print("Model đã sẵn sàng!")
+
+    def predict(
+        self,
+        label: str = Input(description="Tên loài vật hoặc sự vật cần mô tả", default="Con chó"),
+    ) -> str:
+        prompt = f"Bạn là một chuyên gia về các loài vật và sự vật. Hãy cung cấp một đoạn mô tả ngắn gọn, thú vị về: {label}."
+        
+        messages = [
+            {"role": "system", "content": "Bạn là một trợ lý thông minh hỗ trợ giải đáp thông tin một cách ngắn gọn, súc tích."},
+            {"role": "user", "content": prompt}
+        ]
+        
+        input_ids = self.tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True, return_tensors="pt").to(self.model.device)
+        
+        with torch.no_grad():
+            outputs = self.model.generate(
+                input_ids,
+                max_new_tokens=256,
+                temperature=0.7,
+                top_p=0.9,
+                repetition_penalty=1.1,
+                do_sample=True,
+                eos_token_id=self.tokenizer.eos_token_id
+            )
+        
+        generated_ids = outputs[0][len(input_ids[0]):]
+        result = self.tokenizer.decode(generated_ids, skip_special_tokens=True).strip()
+        return result
+""")
+
+print("\n3. Đang Build và Push model lên Replicate (Quá trình này có thể mất 10-15 phút)...")
+!cog push r8.im/{model_name}
