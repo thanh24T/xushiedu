@@ -6,8 +6,8 @@ from peft import PeftModel
 class Predictor(BasePredictor):
     def setup(self):
         """Hàm load model vào bộ nhớ"""
-        print("Đang tải Base Model Llama-3-8B...")
-        base_model_name = "unsloth/llama-3-8b-Instruct-bnb-4bit"
+        print("Đang tải Base Model Llama-3-8B...", flush=True)
+        base_model_name = "models/base"
         quantization_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_compute_dtype=torch.float16,
@@ -24,11 +24,11 @@ class Predictor(BasePredictor):
             device_map="auto"
         )
 
-        print("Đang tải LoRA Model từ HuggingFace...")
-        lora_repo = "SDSD124/xushiedu-llama3-8b-lora"
+        print("Đang tải LoRA Model...", flush=True)
+        lora_repo = "models/lora"
         self.model = PeftModel.from_pretrained(base_model, lora_repo)
         self.model.eval()
-        print("Model đã sẵn sàng!")
+        print("Model đã sẵn sàng!", flush=True)
 
     def predict(
         self,
