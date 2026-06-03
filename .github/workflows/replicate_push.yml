@@ -27,8 +27,5 @@ jobs:
           # Di chuyển vào thư mục chứa cấu hình
           cd replicate_model
           
-          # Đăng nhập vào Replicate
-          echo $REPLICATE_API_TOKEN | cog login --token-stdin
-          
-          # Đẩy model lên
+          # Đẩy model lên (Cog sẽ tự động dùng REPLICATE_API_TOKEN)
           cog push r8.im/${{ github.event.inputs.model_name }}
