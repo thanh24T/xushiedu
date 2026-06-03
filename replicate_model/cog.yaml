@@ -7,5 +7,7 @@ build:
     - "peft==0.6.2"
     - "accelerate==0.24.1"
     - "bitsandbytes==0.41.2"
+    - "scipy"
+    - "numpy<2"
 
 predict: "predict.py:Predictor"
